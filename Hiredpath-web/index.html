@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HiredPath</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <h1>HiredPath</h1>
+        <p class="muted">Track job applications fast. Local-first MVP.</p>
+      </div>
+      <div class="actions">
+        <button id="exportBtn">Export CSV</button>
+        <button class="primary" id="addBtn">+ Add</button>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="filters">
+        <input id="q" placeholder="Search company / role..." />
+        <select id="statusFilter">
+          <option value="">All statuses</option>
+          <option>Interested</option>
+          <option>Applied</option>
+          <option>Interview</option>
+          <option>Offer</option>
+          <option>Rejected</option>
+          <option>Withdrawn</option>
+        </select>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Link</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <dialog id="modal">
+      <form method="dialog" id="form" class="modal">
+        <h2 id="modalTitle">Add application</h2>
+
+        <label>Company
+          <input id="company" required />
+        </label>
+
+        <label>Role
+          <input id="role" required />
+        </label>
+
+        <label>Status
+          <select id="status" required>
+            <option>Interested</option>
+            <option selected>Applied</option>
+            <option>Interview</option>
+            <option>Offer</option>
+            <option>Rejected</option>
+            <option>Withdrawn</option>
+          </select>
+        </label>
+
+        <label>Date submitted
+          <input id="dateSubmitted" type="date" />
+        </label>
+
+        <label>Job link
+          <input id="jobLink" type="url" placeholder="https://..." />
+        </label>
+
+        <label>Notes
+          <textarea id="notes" rows="3" placeholder="Next steps, recruiter name, follow-up date..."></textarea>
+        </label>
+
+        <div class="modalActions">
+          <button value="cancel">Cancel</button>
+          <button class="primary" id="saveBtn" value="default">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <footer class="muted">
+      Stored locally in your browser (MVP). Later: accounts + sync.
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
