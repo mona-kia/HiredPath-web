@@ -24,3 +24,15 @@ dialog::backdrop { background: rgba(0,0,0,0.55); }
 .modalActions { display:flex; justify-content:flex-end; gap:10px; margin-top: 6px; }
 footer { margin-top: 18px; }
 .smallBtn { padding: 8px 10px; border-radius: 10px; }
+
+.modal label { display: grid; gap: 6px; }
+.modal input, .modal select, .modal textarea { max-width: 100%; }
+
+table { width: 100%; table-layout: fixed; }
+th:nth-child(1), td:nth-child(1) { width: 22%; }
+th:nth-child(2), td:nth-child(2) { width: 22%; }
+th:nth-child(3), td:nth-child(3) { width: 14%; }
+th:nth-child(4), td:nth-child(4) { width: 14%; }
+th:nth-child(5), td:nth-child(5) { width: 14%; }
+th:nth-child(6), td:nth-child(6) { width: 14%; }
+td { overflow: hidden; text-overflow: ellipsis; }

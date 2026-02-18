@@ -8,6 +8,7 @@ const statusFilterEl = document.getElementById("statusFilter");
 
 const addBtn = document.getElementById("addBtn");
 const exportBtn = document.getElementById("exportBtn");
+const cancelBtn = document.getElementById("cancelBtn").addEventListener("click", () => modal.close())
 
 const form = document.getElementById("form");
 const modalTitle = document.getElementById("modalTitle");
@@ -103,6 +104,18 @@ function delItem(id) {
   const items = load().filter(x => x.id !== id);
   save(items);
   render();
+}
+
+function normalizeUrl(input) {
+  if (!input) return "";
+
+  let url = input.trim();
+  if (url === "https://") return "";
+
+  if (!/^https?:\/\//i.test(url)) {
+    url = "https://" + url;
+  }
+  return url;
 }
 
 function upsertFromForm() {
