@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,12 +11,28 @@
   <main class="container">
     <header class="header">
       <div>
-        <h1>HiredPath - v2</h1>
+        <h1>HiredPath</h1>
         <p class="muted">Track job applications fast. Local-first MVP.</p>
       </div>
-      <div class="actions">
-        <button id="exportBtn">Export CSV</button>
-        <button class="primary" id="addBtn">+ Add</button>
+
+      <div class="topRight">
+        <div class="profileRow">
+          <label class="srOnly" for="profileSelect">Profile</label>
+          <select id="profileSelect" title="Profile"></select>
+          <button id="newProfileBtn" class="smallBtn" title="Create new local profile">+ Profile</button>
+
+          <label class="srOnly" for="modeSelect">Mode</label>
+          <select id="modeSelect" title="Storage mode">
+            <option value="local">Local-only (no backend)</option>
+            <option value="cloud">Cloud (requires backend)</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button id="exportCsvBtn">Export CSV</button>
+          <button id="exportPdfBtn">Export PDF</button>
+          <button class="primary" id="addBtn">+ Add</button>
+        </div>
       </div>
     </header>
 
@@ -42,6 +59,7 @@
               <th>Status</th>
               <th>Date</th>
               <th>Link</th>
+              <th>Notes</th>
               <th></th>
             </tr>
           </thead>
@@ -55,11 +73,11 @@
         <h2 id="modalTitle">Add application</h2>
 
         <label>Company
-          <input id="company" required />
+          <input id="company" required autocomplete="off" />
         </label>
 
         <label>Role
-          <input id="role" required />
+          <input id="role" required autocomplete="off" />
         </label>
 
         <label>Status
@@ -78,7 +96,8 @@
         </label>
 
         <label>Job link
-          <input id="jobLink" type="text" value="https://" placeholder="example.com" />
+          <input id="jobLink" type="text" inputmode="url" placeholder="example.com or https://example.com" />
+          <p class="hint muted">You can paste <span class="mono">google.com</span>, <span class="mono">www.google.com</span>, or a full URL.</p>
         </label>
 
         <label>Notes
@@ -86,14 +105,14 @@
         </label>
 
         <div class="modalActions">
-          <button value="cancel" id="cancelBtn">Cancel</button>
-          <button class="primary" id="saveBtn" value="default">Save</button>
+          <button id="cancelBtn" value="cancel" type="button">Cancel</button>
+          <button class="primary" id="saveBtn" value="default" type="submit">Save</button>
         </div>
       </form>
     </dialog>
 
     <footer class="muted">
-      Stored locally in your browser (MVP). Later: accounts + sync.
+      Stored locally in your browser by default. Cloud mode needs a backend.
     </footer>
   </main>
 
