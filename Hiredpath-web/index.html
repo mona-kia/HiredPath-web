@@ -32,6 +32,8 @@
           <button id="exportCsvBtn">Export CSV</button>
           <button id="exportPdfBtn">Export PDF</button>
           <button class="primary" id="addBtn">+ Add</button>
+          <button id="exportZipBtn">Export Profile ZIP</button>
+          <button id="deleteProfileBtn">Delete Profile</button>
         </div>
       </div>
     </header>
@@ -60,6 +62,7 @@
               <th>Date</th>
               <th>Link</th>
               <th>Notes</th>
+              <th>Files</th> <!-- NEW -->
               <th></th>
             </tr>
           </thead>
@@ -104,18 +107,64 @@
           <textarea id="notes" rows="3" placeholder="Next steps, recruiter name, follow-up date..."></textarea>
         </label>
 
+        <!-- Application Snapshot
+            Stores resume, cover letter, and portfolio files
+            (Local mode: saved in IndexedDB on this device)
+        -->
+        <section class="filesPanel">
+          <h3 class="filesTitle">Application Snapshot</h3>
+        
+          <div class="fileRow">
+            <div class="fileMeta">
+              <strong>Resume</strong>
+              <div class="muted" id="resumeInfo">None uploaded</div>
+            </div>
+            <input id="resumeFile" type="file" accept=".pdf,.doc,.docx" />
+            <button type="button" class="smallBtn" id="resumeDownload">Download</button>
+            <button type="button" class="smallBtn" id="resumeRemove">Remove</button>
+          </div>
+        
+          <div class="fileRow">
+            <div class="fileMeta">
+              <strong>Cover Letter</strong>
+              <div class="muted" id="coverInfo">None uploaded</div>
+            </div>
+            <input id="coverFile" type="file" accept=".pdf,.doc,.docx" />
+            <button type="button" class="smallBtn" id="coverDownload">Download</button>
+            <button type="button" class="smallBtn" id="coverRemove">Remove</button>
+          </div>
+        
+          <div class="fileRow">
+            <div class="fileMeta">
+              <strong>Portfolio / PDF</strong>
+              <div class="muted" id="portfolioInfo">None uploaded</div>
+            </div>
+            <input id="portfolioFile" type="file" accept=".pdf" />
+            <button type="button" class="smallBtn" id="portfolioDownload">Download</button>
+            <button type="button" class="smallBtn" id="portfolioRemove">Remove</button>
+          </div>
+        
+          <p class="muted filesHint">
+            Local mode: files stay on your device (clearing browser data removes them).
+          </p>
+        </section>        
+
         <div class="modalActions">
           <button id="cancelBtn" value="cancel" type="button">Cancel</button>
           <button class="primary" id="saveBtn" value="default" type="submit">Save</button>
         </div>
+        
       </form>
     </dialog>
 
     <footer class="muted">
-      Stored locally in your browser by default. Cloud mode needs a backend.
+      Local-only mode: Your data and files stay on this device (in your browser). Clearing browser data removes them. <br>
+      Cloud mode: Requires an account (coming soon). Data is sent securely to the server.
     </footer>
   </main>
 
-  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script> <!--Adding JSZip to allow for zip download-->
+  <script type="module" src="./app.js"></script>
+
 </body>
 </html>

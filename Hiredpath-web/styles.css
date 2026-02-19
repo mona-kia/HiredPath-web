@@ -61,3 +61,43 @@ footer { margin-top: 18px; }
   th, td { border-bottom: 1px solid #ddd; }
   a { color: black; text-decoration: none; }
 }
+
+/* Application Snapshot panel
+   Displays uploaded files per job
+   Responsive grid layout
+*/
+.filesPanel { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.10); }
+.filesTitle { margin: 0 0 8px; font-size: 14px; opacity: 0.95; }
+.fileRow { display: grid; grid-template-columns: 1fr auto auto auto; gap: 8px; align-items: center; margin-bottom: 8px; }
+.fileMeta { display:flex; flex-direction:column; gap:2px; }
+.filesHint { font-size: 12px; margin-top: 6px; }
+@media (max-width: 720px){
+  .fileRow { grid-template-columns: 1fr; }
+}
+ /* style for the drop down menu for the attached files*/
+ .filesCell { position: relative; }
+.filesBtn { padding: 8px 10px; border-radius: 10px; }
+.filesMenu {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  min-width: 220px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(10,14,25,0.98);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  z-index: 50;
+}
+.filesMenu a, .filesMenu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 6px 0;
+}
+.filesTag {
+  display: inline-block;
+  font-size: 12px;
+  opacity: .85;
+  margin-right: 6px;
+}
